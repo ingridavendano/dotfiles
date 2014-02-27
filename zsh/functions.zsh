@@ -11,3 +11,20 @@ function abspath {
     echo "$(abspath $(dirname $1))/$(basename $1)"
   fi
 }
+
+psg ()
+{
+    ps aux | grep --color=auto $1
+}
+
+
+lst() {
+  # colorized listing of individual files
+  set +eu
+  if [ "$1" ]; then
+    prefix="$1/"
+  else
+    prefix=
+  fi
+  print -l $prefix**/* | xargs ls -d $ls_opt
+}
